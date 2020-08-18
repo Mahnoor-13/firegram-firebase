@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ProgressBar from "./ProgressBar";
 
 export const UploadFoam = () => {
   const [file, setFile] = useState(null);
@@ -13,7 +14,7 @@ export const UploadFoam = () => {
       setError("");
     } else {
       setFile(null);
-      setError("Please select an correct image file (png and jpeg");
+      setError("Please select an correct image file ( png and jpeg )");
     }
   };
   return (
@@ -25,6 +26,7 @@ export const UploadFoam = () => {
       <div className="output">
         {error && <div className="error">{error}</div>}
         {file && <div>{file.name}</div>}
+        {file && <ProgressBar file={file} setFile={setFile} />}
       </div>
     </form>
   );
